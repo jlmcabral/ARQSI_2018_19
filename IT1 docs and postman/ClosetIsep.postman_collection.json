@@ -1,0 +1,789 @@
+{
+	"info": {
+		"_postman_id": "dd7042f0-0f20-419a-94ef-41a0c8f0500a",
+		"name": "ClosetIsep",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "https://closetisep.herokuapp.com/api/produto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Roupeiro\",\n    \"descricao\": \"Roupeiro de quarto\",\n    \"preco\": 500,\n\t\"CategoriaId\": 5,\n    \"materialId\": [5],\n    \"restricaoId\": [3],\n    \"produtoId\": []\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/produto",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/produto/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/produto",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/produto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":5,\n    \"nome\": \"Roupeiro Grande\",\n    \"descricao\": \"Roupeiro de quarto\",\n    \"preco\": 500,\n\t\"CategoriaId\": 5,\n    \"materialId\": [5],\n    \"restricaoId\": [3],\n    \"produtoId\": []\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/produto/5",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"produto",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/produto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Nome\",\n    \"descricao\": \"Descrição\",\n    \"preco\": 1,\n\t\"CategoriaId\": 1,\n    \"materialId\": [],\n    \"restricaoId\": [],\n    \"produtoId\": []\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/produto/1",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"produto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "https://closetisep.herokuapp.com/api/categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Garagem\",\n\t\"descricao\": \"Categoria de armários de garagem\",\n\t\"CategoriaPaiId\": 2\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/categoria",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/categoria",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/categoria",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":8,\n\t\"nome\": \"Garagem exterior\",\n\t\"descricao\": \"Categoria de armários de garagem\",\n\t\"CategoriaPaiId\": 2\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/categoria/8",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"categoria",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1,\n\t\"nome\": \"Nome\",\n\t\"descricao\": \"Descrição\",\n\t\"CategoriaPaiId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/categoria/8",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"categoria",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dimensao",
+			"item": [
+				{
+					"name": "https://closetisep.herokuapp.com/api/dimensao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/dimensao",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"dimensao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/dimensao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/dimensao",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"dimensao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/dimensao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/dimensao",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"dimensao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/dimensao",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/dimensao",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"dimensao"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bfd1511f-0f2b-48ad-8460-e2a569c58a4d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "08b06718-5040-488a-bfa9-f7abb5997493",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Material",
+			"item": [
+				{
+					"name": "https://closetisep.herokuapp.com/api/material",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nome\": \"Zinco\"\n    }"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/material",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"material"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/material",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nome\": \"mat teste 1\"\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/material",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"material"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/material",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 7,\n        \"nome\": \"Vidro Temperado\",\n        \"acabamento\": null\n    }"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/material/7",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"material",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/material",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 1,\n        \"nome\": \"madeira\",\n        \"acabamentoId\": []\n    }"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/material/7",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"material",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Acabamento",
+			"item": [
+				{
+					"name": "https://closetisep.herokuapp.com/api/acabamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nome\": \"Transparente\"\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/acabamento",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"acabamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/acabamento",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\":\"acabamento 4\"\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/acabamento",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"acabamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/acabamento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 8,\n\t\"nome\": \"Transparente temperado\"\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/acabamento/8",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"acabamento",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/acabamento",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 1,\n        \"nome\": \"acabamento 1\"\n    }"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/acabamento/6",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"acabamento",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restricao",
+			"item": [
+				{
+					"name": "https://closetisep.herokuapp.com/api/restricao",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\":\"Cor\"\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/restricao",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"restricao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/restricao",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/restricao",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"restricao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/restricao",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 4,\n\t\"nome\":\"Cor transparente\"\n}"
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/restricao",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"restricao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://closetisep.herokuapp.com/api/restricao",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisep.herokuapp.com/api/restricao/4",
+							"protocol": "http",
+							"host": [
+								"closetisep",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"restricao",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

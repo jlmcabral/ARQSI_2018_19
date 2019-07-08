@@ -1,0 +1,1739 @@
+{
+	"info": {
+		"_postman_id": "6769c08f-f942-49d2-bd49-a6331143daed",
+		"name": "ClosetISEP API testing",
+		"description": "This collection shall test the HTTP request of our API ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - acabamanto Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbe1637c-22fd-495e-a18c-e58e502ecc8e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no Acabamento with name \\\"acabam test\\\"\"] = !responseBody.has(\"acabam test\");",
+							"tests[\"There is no Acabamento with name \\\"acabam\\\"\"] = !responseBody.has(\"acabam\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/acabamento",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"acabamento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Acabamento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0f96d04-3486-4472-985c-1f32d5020c1b",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"//Store the result on a Environment Variable",
+							"var AcabamentoId = postman.getResponseHeader(\"location\");",
+							"postman.setEnvironmentVariable(\"AcabamentoId\", AcabamentoId );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"nome\": \"acabam test\"\n }"
+				},
+				"url": {
+					"raw": "{{url}}/api/acabamento/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"acabamento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - acabamanto Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Acabamento with name \\\"acabam test\\\" exists\"] = responseBody.has(\"acabam test\");",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"AcabamentoIdVal\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{AcabamentoId}}",
+					"host": [
+						"{{AcabamentoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Acabamento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f56d79df-455a-4898-ac3c-8464c7d9d97a",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": {{AcabamentoIdVal}},\n        \"nome\": \"acabam\"\n}"
+				},
+				"url": {
+					"raw": "{{AcabamentoId}}",
+					"host": [
+						"{{AcabamentoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - acabamanto Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Acabamento with name \\\"acabam test\\\" changed\"] = responseBody.has(\"acabam\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{AcabamentoId}}",
+					"host": [
+						"{{AcabamentoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - Acabamento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{AcabamentoId}}",
+					"host": [
+						"{{AcabamentoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - acabamanto Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"tests[\"There is no Acabamento with name \\\"acabam test\\\"\"] = !responseBody.has(\"acabam test\");",
+							"tests[\"There is no Acabamento with name \\\"acabam\\\"\"] = !responseBody.has(\"acabam\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{AcabamentoId}}",
+					"host": [
+						"{{AcabamentoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Material Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbe1637c-22fd-495e-a18c-e58e502ecc8e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no Material with name \\\"mat test\\\"\"] = !responseBody.has(\"mat test\");",
+							"tests[\"There is no Material with name \\\"mat\\\"\"] = !responseBody.has(\"mat\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/material/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"material",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Material",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0f96d04-3486-4472-985c-1f32d5020c1b",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"//Store the result on a Environment Variable",
+							"var MaterialId = postman.getResponseHeader(\"location\");",
+							"postman.setEnvironmentVariable(\"MaterialId\", MaterialId );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \n        \"nome\": \"mat test\",\n        \"acabamentoId\": [\n            \n        ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/acabamento/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"acabamento",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Material Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Material with name \\\"mat test\\\" exists\"] = responseBody.has(\"mat test\");",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"MaterialIdVal\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{MaterialId}}",
+					"host": [
+						"{{MaterialId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Material",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f56d79df-455a-4898-ac3c-8464c7d9d97a",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": {{MaterialIdVal}},\n        \"nome\": \"mat\",\n        \"acabamentoId\": []\n}"
+				},
+				"url": {
+					"raw": "{{MaterialId}}",
+					"host": [
+						"{{MaterialId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Material Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Material with name \\\"mat test\\\" changed\"] = responseBody.has(\"mat\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{MaterialId}}",
+					"host": [
+						"{{MaterialId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - Material",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{MaterialId}}",
+					"host": [
+						"{{MaterialId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Material Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"tests[\"There is no Material with name \\\"mat test\\\"\"] = !responseBody.has(\"mat test\");",
+							"tests[\"There is no Material with name \\\"mat\\\"\"] = !responseBody.has(\"mat\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{MaterialId}}",
+					"host": [
+						"{{MaterialId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Dimensao Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbe1637c-22fd-495e-a18c-e58e502ecc8e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no Dimensao with name \\\"dim test\\\"\"] = !responseBody.has(\"dim test\");",
+							"tests[\"There is no Dimensao with name \\\"dim\\\"\"] = !responseBody.has(\"dim\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/dimensao/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"dimensao",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Dimensao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0f96d04-3486-4472-985c-1f32d5020c1b",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"//Store the result on a Environment Variable",
+							"var DimensaoId = postman.getResponseHeader(\"location\");",
+							"postman.setEnvironmentVariable(\"DimensaoId\", DimensaoId );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"tipo\": \"dim test\",\n        \"lmax\": 200,\n        \"lmin\": 0,\n        \"amax\": 200,\n        \"amin\": 0,\n        \"pmax\": 200,\n        \"pmin\": 0\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/dimensao/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"dimensao",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Dimensao Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Dimensao with name \\\"dim test\\\" exists\"] = responseBody.has(\"dim test\");",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"DimensaoIdVal\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{DimensaoId}}",
+					"host": [
+						"{{DimensaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Dimensao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f56d79df-455a-4898-ac3c-8464c7d9d97a",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": {{DimensaoIdVal}},\n        \"tipo\": \"dim\",\n        \"lmax\": 200,\n        \"lmin\": 0,\n        \"amax\": 200,\n        \"amin\": 0,\n        \"pmax\": 200,\n        \"pmin\": 0\n}"
+				},
+				"url": {
+					"raw": "{{DimensaoId}}",
+					"host": [
+						"{{DimensaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Dimensao Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Dimensao with name \\\"dim test\\\" changed\"] = responseBody.has(\"dim\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{DimensaoId}}",
+					"host": [
+						"{{DimensaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - Dimensao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{DimensaoId}}",
+					"host": [
+						"{{DimensaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Dimensao Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"tests[\"There is no Dimensao with name \\\"dim test\\\"\"] = !responseBody.has(\"dim test\");",
+							"tests[\"There is no Dimensao with name \\\"dim\\\"\"] = !responseBody.has(\"dim\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{DimensaoId}}",
+					"host": [
+						"{{DimensaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Restricao Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbe1637c-22fd-495e-a18c-e58e502ecc8e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no Restricao with name \\\"rest test\\\"\"] = !responseBody.has(\"rest test\");",
+							"tests[\"There is no Restricao with name \\\"rest\\\"\"] = !responseBody.has(\"rest\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/restricao/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"restricao",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Restricao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0f96d04-3486-4472-985c-1f32d5020c1b",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"//Store the result on a Environment Variable",
+							"var RestricaoId = postman.getResponseHeader(\"location\");",
+							"postman.setEnvironmentVariable(\"RestricaoId\", RestricaoId );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \n        \"nome\": \"rest test\"\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/api/restricao/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"restricao",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Restricao Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Restricao with name \\\"rest test\\\" exists\"] = responseBody.has(\"rest test\");",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"RestricaoIdVal\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{RestricaoId}}",
+					"host": [
+						"{{RestricaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Restricao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f56d79df-455a-4898-ac3c-8464c7d9d97a",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": {{RestricaoIdVal}},\n        \"nome\": \"rest\"\n}"
+				},
+				"url": {
+					"raw": "{{RestricaoId}}",
+					"host": [
+						"{{RestricaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Restricao Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Restricao with name \\\"rest test\\\" changed\"] = responseBody.has(\"rest\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{RestricaoId}}",
+					"host": [
+						"{{RestricaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - Restricao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{RestricaoId}}",
+					"host": [
+						"{{RestricaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Restricao Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"tests[\"There is no Restricao with name \\\"rest test\\\"\"] = !responseBody.has(\"rest test\");",
+							"tests[\"There is no Restricao with name \\\"rest\\\"\"] = !responseBody.has(\"rest\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{RestricaoId}}",
+					"host": [
+						"{{RestricaoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Categoria Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dbe1637c-22fd-495e-a18c-e58e502ecc8e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no Categoria with name \\\"cat test\\\"\"] = !responseBody.has(\"cat test\");",
+							"tests[\"There is no Categoria with name \\\"cat 1\\\"\"] = !responseBody.has(\"cat 1\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/categoria/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"categoria",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0f96d04-3486-4472-985c-1f32d5020c1b",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"//Store the result on a Environment Variable",
+							"var CategoriaId = postman.getResponseHeader(\"location\");",
+							"postman.setEnvironmentVariable(\"CategoriaId\", CategoriaId );"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"nome\": \"cat test\",\n    \"descricao\": \"geral\",\n    \"categoriaPai\": {}\n }"
+				},
+				"url": {
+					"raw": "{{url}}/api/categoria/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"categoria",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Categoria Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Categoria with name \\\"cat test\\\" exists\"] = responseBody.has(\"cat test\");",
+							"",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"CategoriaIdVal\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{CategoriaId}}",
+					"host": [
+						"{{CategoriaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f56d79df-455a-4898-ac3c-8464c7d9d97a",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": {{CategoriaIdVal}},\n    \"nome\": \"cat 1\",\n    \"descricao\": \"geral\",\n    \"categoriaPai\": {}\n}"
+				},
+				"url": {
+					"raw": "{{CategoriaId}}",
+					"host": [
+						"{{CategoriaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Categoria Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Categoria with name \\\"cat test\\\" changed\"] = responseBody.has(\"cat 1\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{CategoriaId}}",
+					"host": [
+						"{{CategoriaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - Categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{CategoriaId}}",
+					"host": [
+						"{{CategoriaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Categoria Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"tests[\"There is no Categoria with name \\\"cat test\\\"\"] = !responseBody.has(\"cat test\");",
+							"tests[\"There is no Categoria with name \\\"cat 1\\\"\"] = !responseBody.has(\"cat 1\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{CategoriaId}}",
+					"host": [
+						"{{CategoriaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Produto Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "456c8c33-bd06-4347-a08a-a4091a48b6ff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no produto with name \\\"Armario TESTE1\\\"\"] = !responseBody.has(\"Armario TESTE1\");",
+							"tests[\"There is no produto with name \\\"alt test\\\"\"] = !responseBody.has(\"alt test\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/produto/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"produto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Produto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49a61ca1-7000-4d3b-af87-b1865a808a5e",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"//Store the result on a Environment Variable",
+							"var ProdutoId = postman.getResponseHeader(\"location\");",
+							"postman.setEnvironmentVariable(\"ProdutoId\", ProdutoId );",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Armario TESTE1\",\n    \"descricao\": \"Prateleira Normal\",\n    \"preco\": 10,\n    \"obrigatorio\": false,\n    \"categoriaId\": 1,\n    \"dimensaoId\": 1,\n    \"produtoId\": [],\n    \"materialId\": [],\n    \"restricaoId\": []\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/produto/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"produto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Produto Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef764c51-c308-439b-8e53-98fcb27f72d1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Content-Type test",
+							"tests[\"Produto with name \\\"Armario TESTE1\\\" created\"] = responseBody.has(\"Armario TESTE1\");",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"ProdutoIdVal\", jsonData.id);",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProdutoId}}",
+					"host": [
+						"{{ProdutoId}}"
+					]
+				},
+				"description": "this test shall verify that the produto id == 100 does not exists"
+			},
+			"response": [
+				{
+					"name": "GET to check that produto 100 does not  exists",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/produto/100",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								"100"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Nov 2018 11:16:53 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "PUT - Produto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5b4cf70-b599-46d4-a019-9f3f3001df43",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": {{ProdutoIdVal}},\n    \"nome\": \"alt test\",\n    \"descricao\": \"Prateleira\",\n    \"preco\": 10,\n    \"obrigatorio\": false,\n    \"categoriaId\": 1,\n    \"dimensaoId\": 1,\n    \"produtoId\": [],\n    \"materialId\": [],\n    \"restricaoId\": []\n}"
+				},
+				"url": {
+					"raw": "{{ProdutoId}}",
+					"host": [
+						"{{ProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Produto Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef764c51-c308-439b-8e53-98fcb27f72d1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Content-Type test",
+							"tests[\"produto with name \\\"Armario TESTE1\\\" changed\"] = responseBody.has(\"alt test\");",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProdutoId}}",
+					"host": [
+						"{{ProdutoId}}"
+					]
+				},
+				"description": "this test shall verify that the produto id == 100 does not exists"
+			},
+			"response": [
+				{
+					"name": "GET to check that produto 100 does not  exists",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/produto/100",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								"100"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Nov 2018 11:16:53 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete - Produto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProdutoId}}",
+					"host": [
+						"{{ProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Produto Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"tests[\"There is no produto with name \\\"Armario TESTE1\\\"\"] = !responseBody.has(\"Armario TESTE1\");",
+							"tests[\"There is no produto with name \\\"alt test\\\"\"] = !responseBody.has(\"alt test\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{ProdutoId}}",
+					"host": [
+						"{{ProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

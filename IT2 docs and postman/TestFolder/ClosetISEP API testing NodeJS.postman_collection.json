@@ -1,0 +1,680 @@
+{
+	"info": {
+		"_postman_id": "4812a54b-af80-4735-b4f8-87061c524b57",
+		"name": "ClosetISEP API testing NodeJS",
+		"description": "This collection shall test all NodeJS controllers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - Encomenda Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9a7d19b-311a-4786-ba05-e307791b458a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no Encomenda with name \\\"enc test\\\"\"] = !responseBody.has(\"enc test\");",
+							"tests[\"There is no Encomenda with name \\\"enc\\\"\"] = !responseBody.has(\"enc\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Encomenda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6d3f1b0-ea2f-454d-80a0-45d5680d4320",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"EncomendaId\", jsonData._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listaItens\": [],\n    \"nome\": \"enc test\"\n}"
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Encomenda Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Encomenda with name \\\"enc test\\\" exists\"] = responseBody.has(\"enc test\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/{{EncomendaId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						"{{EncomendaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Encomenda - Itens",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// tests[\"Encomenda with name \\\"enc test\\\" exists\"] = responseBody.has(\"enc test\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/{{EncomendaId}}/itens/",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						"{{EncomendaId}}",
+						"itens",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Encomenda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f56d79df-455a-4898-ac3c-8464c7d9d97a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listaItens\": [],\n    \"_id\": \"{{EncomendaId}}\",\n    \"nome\": \"enc\"\n}"
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/{{EncomendaId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						"{{EncomendaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Encomenda Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"Encomenda with name \\\"enc test\\\" changed\"] = responseBody.has(\"enc\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/{{EncomendaId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						"{{EncomendaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - Encomenda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/{{EncomendaId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						"{{EncomendaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Encomenda Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no Encomenda with name \\\"enc test\\\"\"] = responseBody.has(\"null\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/encomenda/{{EncomendaId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"encomenda",
+						"{{EncomendaId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - ItemProduto - Catalogo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9a7d19b-311a-4786-ba05-e307791b458a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/catalogo/",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						"catalogo",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - ItemProduto Inicial",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9a7d19b-311a-4786-ba05-e307791b458a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"There is no ItemProduto with name \\\"it test\\\"\"] = !responseBody.has(\"it test\");",
+							"tests[\"There is no ItemProduto with name \\\"it1\\\"\"] = !responseBody.has(\"it1\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - ItemProduto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6d3f1b0-ea2f-454d-80a0-45d5680d4320",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Content-Type test",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							"tests[\"Request has Content-Type\"] = contentTypeHeaderExists;",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"itProdutoId\", jsonData._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"item\": [],\n        \"produtoId\": 13,\n        \"nome\": \"it test\",\n        \"largura\": 100,\n        \"altura\": 75,\n        \"profundidade\": 55\n    }"
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - ItemProduto Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"ItemProduto with name \\\"it test\\\" exists\"] = responseBody.has(\"it test\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/{{itProdutoId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						"{{itProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - ItemProduto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f56d79df-455a-4898-ac3c-8464c7d9d97a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"item\": [],\n    \"_id\": \"{{itProdutoId}}\",\n    \"produtoId\": 13,\n    \"nome\": \"it1\",\n    \"largura\": 100,\n    \"altura\": 75,\n    \"profundidade\": 55\n}"
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/{{itProdutoId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						"{{itProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - ItemProduto Copy Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"tests[\"ItemProduto with name \\\"it test\\\" changed\"] = responseBody.has(\"it1\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/{{itProdutoId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						"{{itProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete - ItemProduto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42be8789-4fcf-4de6-90e2-abeaac9c644e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/{{itProdutoId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						"{{itProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - ItemProduto Final",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab11016c-3693-4ea6-a553-50d9e89c1e1b",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"tests[\"There is no ItemProduto with name \\\"it test\\\"\"] = responseBody.has(\"Not Found\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{urlNode}}/api/itemproduto/{{itProdutoId}}",
+					"host": [
+						"{{urlNode}}"
+					],
+					"path": [
+						"api",
+						"itemproduto",
+						"{{itProdutoId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

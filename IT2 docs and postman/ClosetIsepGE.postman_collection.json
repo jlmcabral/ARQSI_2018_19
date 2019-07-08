@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "648127e1-52ea-4e73-b56c-7a26f12722ad",
+		"name": "ClosetIsepGE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Encomenda",
+			"item": [
+				{
+					"name": "http://closetisepge.herokuapp.com/api/encomenda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/encomenda",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"encomenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/encomenda/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/encomenda/5be85415ea7ebe6b5f2606c9",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"encomenda",
+								"5be85415ea7ebe6b5f2606c9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/encomenda/id/itens",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/encomenda/5be85415ea7ebe6b5f2606c9/itens",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"encomenda",
+								"5be85415ea7ebe6b5f2606c9",
+								"itens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/encomenda/id/itens/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/encomenda/5be85415ea7ebe6b5f2606c9/itens/",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"encomenda",
+								"5be85415ea7ebe6b5f2606c9",
+								"itens",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/encomenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/encomenda",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"encomenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/encomenda/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/encomenda",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"encomenda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/encomenda/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/encomenda",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"encomenda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ItemProduto",
+			"item": [
+				{
+					"name": "http://closetisepge.herokuapp.com/api/itemproduto/catalogo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/itemproduto/catalogo",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemproduto",
+								"catalogo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/itemproduto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/itemproduto",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemproduto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/itemproduto/id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/itemproduto/5be855f57da34f6b79407940",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemproduto",
+								"5be855f57da34f6b79407940"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/itemproduto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"produtoId\": 7,\n    \"nome\": \"Roupeiro\",\n    \"largura\": 300,\n    \"altura\": 250,\n    \"profundidade\": 100,\n    \"item\": []\n}"
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/itemproduto",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemproduto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/itemproduto/id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/itemproduto",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemproduto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://closetisepge.herokuapp.com/api/itemproduto/id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://closetisepge.herokuapp.com/api/itemproduto",
+							"protocol": "http",
+							"host": [
+								"closetisepge",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"itemproduto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

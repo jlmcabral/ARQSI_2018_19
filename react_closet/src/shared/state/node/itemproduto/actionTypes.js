@@ -1,0 +1,19 @@
+const packageName = 'redux-count';
+
+export const GET_ITEMPRODUTO_REQUEST = `${packageName}/GET_ITEMPRODUTO_REQUEST`;
+export const GET_ITEMPRODUTO_SUCCESS = `${packageName}/GET_ITEMPRODUTO_SUCCESS`;
+export const GET_ITEMPRODUTO_FAIL = `${packageName}/GET_ITEMPRODUTO_FAIL`;
+
+export const CREATE_ITEMPRODUTO_REQUEST = `${packageName}/CREATE_ITEMPRODUTO_REQUEST`;
+export const CREATE_ITEMPRODUTO_SUCCESS = `${packageName}/CREATE_ITEMPRODUTO_SUCCESS`;
+export const CREATE_ITEMPRODUTO_FAIL = `${packageName}/CREATE_ITEMPRODUTO_FAIL`;
+
+export const EDIT_ITEMPRODUTO_REQUEST = `${packageName}/EDIT_ITEMPRODUTO_REQUEST`;
+export const EDIT_ITEMPRODUTO_SUCCESS = `${packageName}/EDIT_ITEMPRODUTO_SUCCESS`;
+export const EDIT_ITEMPRODUTO_FAIL = `${packageName}/EDIT_ITEMPRODUTO_FAIL`;
+
+export const DELETE_ITEMPRODUTO_REQUEST = `${packageName}/DELETE_ITEMPRODUTO_REQUEST`;
+export const DELETE_ITEMPRODUTO_SUCCESS = `${packageName}/DELETE_ITEMPRODUTO_SUCCESS`;
+export const DELETE_ITEMPRODUTO_FAIL = `${packageName}/DELETE_ITEMPRODUTO_FAIL`;
+
+export const RESET = `${packageName}/RESET`;

@@ -1,0 +1,5 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1e085788-6a0b-4306-a8d4-5d63cee6671b/resourceGroups/appsvc_rg_windows_centralus/providers/Microsoft.Web/sites/closetIsep",
+    "appService.deploySubpath": "",
+    "git.ignoreLimitWarning": true
+}
